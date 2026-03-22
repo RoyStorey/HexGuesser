@@ -1,0 +1,106 @@
+:root {
+	--text: #6b6375;
+	--text-h: #08060d;
+	--bg: #fff;
+	--border: #e5e4e7;
+	--code-bg: #f4f3ec;
+	--accent: #aa3bff;
+	--accent-bg: rgba(170, 59, 255, 0.1);
+	--accent-border: rgba(170, 59, 255, 0.5);
+	--social-bg: rgba(244, 243, 236, 0.5);
+	--shadow:
+		rgba(0, 0, 0, 0.1) 0 10px 15px -3px, rgba(0, 0, 0, 0.05) 0 4px 6px -2px;
+
+	--sans: system-ui, "Segoe UI", Roboto, sans-serif;
+	--heading: system-ui, "Segoe UI", Roboto, sans-serif;
+	--mono: ui-monospace, Consolas, monospace;
+
+	margin: 0px;
+	font: 18px/145% var(--sans);
+	letter-spacing: 0.18px;
+	color-scheme: light dark;
+	color: var(--text);
+	background: var(--bg);
+	font-synthesis: none;
+	text-rendering: optimizeLegibility;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+
+	@media (max-width: 1024px) {
+		font-size: 16px;
+	}
+}
+
+body {
+	margin: 0px;
+}
+#center {
+	height: 100vh;
+	width: 100%;
+}
+
+#background {
+	height: 100%;
+	width: 100%;
+	display: flex;
+	margin: 0px;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+}
+
+.button {
+	border-radius: 6px;
+	border: none;
+	/* padding: 1rem 2rem; */
+	margin: 0px;
+}
+
+button {
+	margin: 0px;
+}
+
+.guess-section {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 1rem;
+	margin-top: 2rem;
+	background: white;
+	padding: 4rem;
+	z-index: 10;
+	border-radius: 4px;
+	box-shadow: 2px 2px 20px rgba(0, 0, 0, 0.282);
+}
+
+.guess-section input {
+	padding: 0.5rem;
+	border: 1px solid var(--border);
+	border-radius: 4px;
+	font-size: 1rem;
+	background: none;
+	z-index: 10;
+}
+
+.guess-section button {
+	/* background: var(--accent); */
+	color: white;
+	border: none;
+	padding: 0.5rem 1rem;
+	border-radius: 4px;
+	cursor: pointer;
+	z-index: 10;
+}
+
+.guess-section p {
+	margin: 0;
+	font-weight: bold;
+	z-index: 10;
+}
+
+.color-display {
+	position: absolute;
+	height: 100%;
+	width: 50%;
+	right: 0px;
+}
