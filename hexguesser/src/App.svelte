@@ -1,18 +1,21 @@
 <script>
   function getDailyColor() {
-    const today = new Date().toISOString().split('T')[0]; // YYYY-MM-DD
+    const today = new Date().toISOString().split('T')[0];
+
     let seed = 0;
     for (let i = 0; i < today.length; i++) {
-      seed += today.charCodeAt(i);
+      seed = (seed * 31 + today.charCodeAt(i)) >>> 0;
     }
-    // Simple seeded random number generator
+
     function seededRandom() {
       seed = (seed * 9301 + 49297) % 233280;
       return seed / 233280;
     }
+
     const r = Math.floor(seededRandom() * 256);
     const g = Math.floor(seededRandom() * 256);
     const b = Math.floor(seededRandom() * 256);
+
     return `rgb(${r}, ${g}, ${b})`;
   }
 
@@ -87,6 +90,21 @@
     return Math.round(100 - (difference / maxDifference) * 100);
   }
 
+  /**
+   * @param {string} color1
+   * @param {string} color2
+   * @returns {{ r: number; g: number; b: number }}
+   */
+  function getRgbDifferences(color1, color2) {
+    const rgb1 = hexToRgb(color1);
+    const rgb2 = hexToRgb(color2);
+    return {
+      r: Math.abs(rgb1.r - rgb2.r),
+      g: Math.abs(rgb1.g - rgb2.g),
+      b: Math.abs(rgb1.b - rgb2.b)
+    };
+  }
+
   function handleGuess() {
     const hexColor = rgbToHex(randomColor);
     const normalized = normalizeHex(guess);
@@ -98,7 +116,8 @@
     if (normalized.toLowerCase() === hexColor.toLowerCase()) {
       feedback = 'Correct!';
     } else if (guessCount === 2) {
-      feedback = `You guessed ${normalized}. Today's color is ${hexColor} (${similarity}% match)`;
+      const diffs = getRgbDifferences(normalized, hexColor);
+      feedback = `Final guess: ${normalized}. Today's color is ${hexColor}. Your final guess was off by R:${diffs.r}, G:${diffs.g}, B:${diffs.b}`;
     } else {
       feedback = `You guessed ${normalized}. (${similarity}% match)`;
     }
@@ -126,7 +145,7 @@
           <ul>
             {#each guesses as guessEntry, index}
               <li>
-                {index + 1}. <strong>{guessEntry.value}</strong> — {guessEntry.similarity}% match - <div class="guessColorStrip" style="background:{normalizeHex(guessEntry.value)}"></div>
+                {index + 1}. <strong>{guessEntry.value}</strong> — {guessEntry.similarity}% match —  <div class="guessColorStrip" style="background:{normalizeHex(guessEntry.value)}"></div>
               </li>
             {/each}
           </ul>
