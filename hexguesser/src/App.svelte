@@ -114,7 +114,7 @@
     displayedGuess = normalized;
 
     if (normalized.toLowerCase() === hexColor.toLowerCase()) {
-      feedback = 'Correct!';
+      feedback = "Correct! Don't cheat. DARE to be different.";
     } else if (guessCount === 2) {
       const diffs = getRgbDifferences(normalized, hexColor);
       feedback = `Final guess: ${normalized}. Today's color is ${hexColor}. Your final guess was off by R:${diffs.r}, G:${diffs.g}, B:${diffs.b}`;
