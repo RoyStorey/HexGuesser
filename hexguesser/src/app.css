@@ -238,6 +238,7 @@ ul {
 @media (max-width: 700px) {
   #background {
     padding: 1rem;
+    height: 100%;
   }
 
   .game-section::before {
@@ -260,4 +261,66 @@ ul {
   .color-display {
     width: 50%;
   }
+}
+.top-actions {
+  height: 5vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.stats-toggle {
+  padding: 0.75rem 1rem;
+  border: 1px solid var(--border, #e5e4e7);
+  border-radius: 12px;
+  background: var(--code-bg, #f4f3ec);
+  cursor: pointer;
+  color: black;
+  font-weight: 600;
+}
+
+.stats-panel {
+  max-width: 420px;
+  margin: 0 auto 1rem auto;
+  padding: 1rem;
+  border: 1px solid var(--border, #e5e4e7);
+  border-radius: 12px;
+  color: black;
+  background: var(--code-bg, #f4f3ec);
+}
+
+.stats-panel h2 {
+  margin: 0 0 0.5rem 0;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.75rem;
+}
+
+.stat-card {
+  padding: 0.75rem;
+  border: 1px solid var(--border, #e5e4e7);
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.6);
+  text-align: center;
+}
+
+.stat-card strong {
+  display: block;
+  font-size: 1.1rem;
+  margin-top: 0.25rem;
+}
+
+.stat-label {
+  display: block;
+  font-size: 0.8rem;
+  opacity: 0.8;
+}
+
+.guess-counter {
+  font-size: 0.95rem;
+  margin: 0 0 0.5rem 0;
+  font-weight: 600;
 }
